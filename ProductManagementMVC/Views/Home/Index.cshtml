@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to ProductStore</h1>
+    <p>Product Management System</p>
+    
+    @if (Context.Session.GetString("UserId") != null)
+    {
+        <div class="alert alert-info">
+            <h5>Welcome back, @Context.Session.GetString("Username")!</h5>
+            <p>You are logged in as: @Context.Session.GetString("UserId")</p>
+        </div>
+        
+        <div class="mt-4">
+            <a asp-controller="Products" asp-action="Index" class="btn btn-primary btn-lg">Manage Products</a>
+        </div>
+    }
+</div>

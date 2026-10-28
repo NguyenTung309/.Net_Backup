@@ -1,0 +1,52 @@
+﻿@model IEnumerable<BusinessObjects.Models.Product>
+@{
+    ViewData["Title"] = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int totalItems = ViewBag.TotalItems ?? 0;
+}
+<h1>View Products</h1>
+
+<div class="alert alert-info mb-3">
+    <h5>Total Items in Stock: <span class="badge bg-primary">@totalItems</span></h5>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Product ID
+            </th>
+            <th>
+                Product Name
+            </th>
+            <th>
+                Units In Stock
+            </th>
+            <th>
+                Unit Price
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UnitsInStock)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UnitPrice)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
